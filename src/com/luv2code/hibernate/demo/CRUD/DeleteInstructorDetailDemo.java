@@ -19,11 +19,14 @@ public class DeleteInstructorDetailDemo {
             session.beginTransaction();
 
             // get record by ID
-            int instructorDetailId = 2;
+            int instructorDetailId = 3;
             InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, instructorDetailId);
             System.out.println("Found InstructorDetail: " + tempInstructorDetail);
             System.out.println("Associated Instructor: " + tempInstructorDetail.getInstructor());
 
+            //Although record was being deleted the FK still existed in the Instructor table
+            //This should be set to null before deleting the instructorDetail
+            tempInstructorDetail.getInstructor().setInstructorDetail(null);
             session.delete(tempInstructorDetail);
 
             //commit the transaction

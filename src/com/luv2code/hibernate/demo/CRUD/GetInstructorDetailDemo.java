@@ -20,7 +20,7 @@ public class GetInstructorDetailDemo {
             session.beginTransaction();
 
             // get record by ID
-            int instructorDetailId = 299;
+            int instructorDetailId = 3;
             InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, instructorDetailId);
             System.out.println("Found InstructorDetail: " + tempInstructorDetail);
             System.out.println("Associated Instructor: " + tempInstructorDetail.getInstructor());
